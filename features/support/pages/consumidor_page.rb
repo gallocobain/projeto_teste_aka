@@ -10,17 +10,18 @@ class ConsumidorPage < SitePrism::Page
     element :combo_grau, '#grau_de_escolaridade'
     element :botao_cadastrar, '.btn-success'
 
-    def cadastrar(nome, email, conf_email, senha, data, uf, sexo, grau)
+    def cadastrar(usuario)
 
-        input_nome.set nome
-        input_email.set email
-        input_conf_email.set conf_email
-        input_senha.set senha
-        input_data.set data
-        combo_uf.find('option', text: uf).select_option
-        radio_sexo.set sexo
-        combo_grau.find('option', text: grau).select_option
-        botao_cadastrar.click
+        #self comando para se auto atribuir os valores das variaveis
+        self.input_nome.set usuario.input_nome
+        self.input_email.set usuario.input_email
+        #self.input_conf_email.set usuario.conf_email
+        self.input_senha.set usuario.input_senha
+        #self.input_data_nasc.set usuario.data
+        #self.combo_uf.find.all('option')[rand(27)].select_option usuario.combo_uf
+        self.radio_sexo.set usuario.radio_sexo
+        self.combo_grau.find('option', text: combo_grau).select_option usuario.combo_grau
+        self.botao_cadastrar.click
 
     end
 
